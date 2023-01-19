@@ -38,7 +38,8 @@ class Music extends Database
     }
     public function getAll()
     {
-        $query = "SELECT * FROM `music`";
+        $query = "SELECT m.title as title , m.date_creation as date , m.album as album , m.lyrics as lyrics , ar.name as name_Artist from music as m INNER JOIN artiste as ar 
+        ON m.artiste_id = ar.id";
         $stmt = $this->connection()->prepare($query);
 
         $stmt->execute();
