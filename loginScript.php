@@ -23,8 +23,6 @@ class Login extends Database
         $stmt = $this->connection()->prepare($sql);
         $stmt->execute([$this->email]);
         $result = $stmt->fetch();
-        // var_dump($result);
-        // die;
         if (!isset($result["password"])) {
             $_SESSION['type_message'] = "error";
             $_SESSION['message'] = "Email incorrect";
