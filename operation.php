@@ -7,5 +7,7 @@ if (isset($_POST['saveMusic'])) {
     $date = $_POST['date'];
     $album = $_POST['album'];
     $lyrics = $_POST['lyrics'];
-    $music->create($title, $date, $album, $lyrics);
+    $artiste = $_POST['artist'];
+
+    $music->create($title, $date, $album, $lyrics, $artiste);
 }

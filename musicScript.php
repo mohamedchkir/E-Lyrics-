@@ -9,11 +9,12 @@ class Music extends Database
     public $date;
     public $album;
     public $lyrics;
+    public $artiste;
 
-    public function create($title, $date, $album, $lyrics)
+    public function create($title, $date, $album, $lyrics, $artiste)
     {
 
-        $query = "INSERT INTO `music`(`title`, `date-creation`, `album`, `lyrics`) VALUES ('$title','$date','$album','$lyrics')";
+        $query = "INSERT INTO `music`(`title`, `date_creation`, `album`, `lyrics`,`artiste_id`) VALUES ('$title','$date','$album','$lyrics','$artiste')";
         $stmt = $this->connection()->prepare($query);
         if ($stmt->execute()) {
             $_SESSION["musicMessage-success"] = "Article has been created successfully!";
