@@ -26,7 +26,7 @@ class Music extends Database
     }
     public function update($id, $name, $date, $album, $lyrics)
     {
-        $query = "UPDATE `music` SET `name`='$name',`date-creation`='$date',`album`='$album',`lyrics`='$lyrics' WHERE `id` = $id";
+        $query = "UPDATE `music` SET `name`='$name',`date_creation`='$date',`album`='$album',`lyrics`='$lyrics' WHERE `id` = $id";
         $stmt = $this->connection()->prepare($query);
 
         if ($stmt->execute()) {
@@ -67,4 +67,23 @@ class Music extends Database
 
         return $stmt;
     }
+    // public function Read()
+    // {
+    //     $sql = "SELECT * FROM song";
+    //     $stmt = $this->connect()->query($sql);
+    //     // $stmt->execute();
+    //     // $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    //     while ($result = $stmt->fetch()) {
+    //         echo '
+    //         <tr>
+    //             <td id="songg' . $result['id'] . '" data="' . $result['title'] . '" class="text-white" href="#modal-task" data-bs-toggle="modal" onclick="editdTask(' . $result['id'] . ')" class="text-decoration-none text-white">' . $result['title'] . '</td>
+    //             <td id="artistt' . $result['id'] . '" data="' . $result['artist'] . '" class="text-white">' . $result['artist'] . '</td>
+    //             <td id="lyricss' . $result['id'] . '" data="' . $result['lyrics'] . '" class="text-white text-truncate">' . $result['lyrics'] . '</td>
+    //             <td id="datee' . $result['id'] . '" data="' . $result['date'] . '" class="text-white">' . $result['date'] . '</td>
+    //             <td id="albumm' . $result['id'] . '" data="' . $result['album'] . '" class="text-white">' . $result['album'] . '</td>
+    //         </tr>
+    //         ';
+    //     }
+    //     // return $result;
+    // }
 }

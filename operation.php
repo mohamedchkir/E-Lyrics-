@@ -9,5 +9,8 @@ if (isset($_POST['saveMusic'])) {
     $lyrics = $_POST['lyrics'];
     $artiste = $_POST['artist'];
 
+    // var_dump($date); //2022-02-12 00:00:00
+
+
     $music->create($title, $date, $album, $lyrics, $artiste);
 }

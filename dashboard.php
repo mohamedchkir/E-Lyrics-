@@ -46,15 +46,15 @@ $artist = new Artiste;
         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
           <ul class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
             <li>
-              <a href="home.php" class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0" aria-current="page">Home</a>
+              <a href="home.php" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">Home</a>
             </li>
             <li>
-              <a href="#" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">Music</a>
+              <a href="#" class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0" aria-current="page">Music</a>
             </li>
         </div>
-        <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-10 h-10 rounded-full cursor-pointer" src="./assets/img/profile-img.jpg" alt="User dropdown">
+        <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="sm:hidden md:block	 w-10 h-10 rounded-full cursor-pointer" src="./assets/img/profile-img.jpg" alt="User dropdown">
         <!-- Dropdown menu -->
-        <div id="userDropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+        <div id="userDropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-44 ">
           <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
             <div>Mohamed chkir</div>
             <div class="font-medium truncate">mohamedchkir2@gmail.com</div>
@@ -74,15 +74,14 @@ $artist = new Artiste;
   <section class="text-gray-900 tracking-wider leading-normal">
 
 
-    <!-- Modal toggle -->
-    <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-      Add Music
-    </button>
+
 
     <!-- Main modal -->
+
     <div id="authentication-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
       <div class="relative w-full h-full max-w-md md:h-auto">
         <!-- Modal content -->
+
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
           <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modal">
             <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -93,12 +92,13 @@ $artist = new Artiste;
           <div class="px-6 py-6 lg:px-8">
             <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Music Add:</h3>
             <form method="post" class="space-y-6" action="operation.php">
+              <input type="text" id="id" name="song-id">
               <div class="mb-6">
                 <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Music Name</label>
                 <input type="text" name="title" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required>
               </div>
               <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Artist</label>
-              <select id="countries" name="artist" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <select id="artist" name="artist" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option selected>Choose a country</option>
                 <?php $res = $artist->getArtiste();
                 ?>
@@ -111,20 +111,18 @@ $artist = new Artiste;
             <?php } ?>
             <div class="mb-6">
               <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Album</label>
-              <input type="text" id="name" name="album" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required>
+              <input type="text" id="album" name="album" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required>
             </div>
-            <div class="flex items-center justify-center">
-              <div class="datepicker relative form-floating mb-3 xl:w-96" data-mdb-toggle-button="false">
-                <input name="date" type="text" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Select a date" data-mdb-toggle="datepicker" />
-                <label for="floatingInput" class="text-gray-700">Select a date</label>
-              </div>
+            <div class="mb-6">
+              <label for="floatingInput" class="text-gray-700">Select a date</label>
+              <input id="date" name="date" type="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date" />
             </div>
 
 
             <div class="flex justify-center">
               <div class="mb-3 xl:w-96">
                 <label for="exampleFormControlTextarea1" class="form-label inline-block mb-2 text-gray-700">Msic Lyrics</label>
-                <textarea name="lyrics" class="
+                <textarea id="lyrics" name="lyrics" class="
         form-control
         block
         w-full
@@ -143,6 +141,9 @@ $artist = new Artiste;
             <button name="saveMusic" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
               Save
             </button>
+            <button name="editMusic" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+              edit
+            </button>
             </form>
           </div>
         </div>
@@ -150,6 +151,10 @@ $artist = new Artiste;
     </div>
     <!--Container-->
     <div class="container w-full md:w-4/5 xl:w-3/5  mx-auto px-2">
+      <!-- Modal toggle -->
+      <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="text-white bg-blue-700 hover:bg-blue-800  focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center" type="button">
+        Add Music
+      </button>
       <!--Card-->
       <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
         <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
@@ -169,13 +174,14 @@ $artist = new Artiste;
             ?>
             <?php foreach ($res as $r) { ?>
               <tr>
-                <td><?php echo $r["name_Artist"] ?></td>
-                <td><?php echo $r["title"] ?></td>
+                <td> <?php echo $r["name_Artist"] ?></td>
+                <td onclick="fillModal()" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="cursor-pointer"> <?php echo $r["title"] ?></td>
                 <td><?php echo $r["album"] ?></td>
                 <td><?php echo $r["date"] ?></td>
                 <td><?php echo $r["lyrics"] ?></td>
               </tr>
             <?php } ?>
+
           </tbody>
         </table>
       </div>
@@ -186,6 +192,7 @@ $artist = new Artiste;
   </section>
 
 </body>
+<script src="./assets/js/script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.2/flowbite.min.js"></script>
@@ -206,6 +213,18 @@ $artist = new Artiste;
       .columns.adjust()
       .responsive.recalc();
   });
+
+  function editdTask(id) {
+    document.getElementById("saveMusic").style.display = "none";
+    document.getElementById("editMusic").style.display = "block";
+    document.getElementById('id').value = id;
+    document.getElementById('name').value = document.getElementById("songg" + id).getAttribute('data');
+    document.getElementById('artist').value = document.getElementById("artistt" + id).getAttribute('data');
+    document.getElementById('album').value = document.getElementById("lyricss" + id).getAttribute('data');
+    document.getElementById('date').value = document.getElementById("datee" + id).getAttribute('data');
+    document.getElementById('lyrics').value = document.getElementById("albumm" + id).getAttribute('data');
+
+  }
 </script>
 
 </html>
