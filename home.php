@@ -102,76 +102,39 @@
                         <!-- Grid ends here..-->
 
                     </div>
-                    <div div class=" mt-5 grid  lg:grid-cols-3  md:grid-cols-3 p-4 gap-3">
+                    <div class="p-4 pt-28 pb-0  pl-10 font-bold text-gray-600">Music</div>
 
-                        <div class="col-span-2 flex flex-col   p-8 bg-white rounded shadow-sm">
-                            <b class="flex flex-row text-gray-500 text-3xl">Latest</b>
+                    <div class="cards">
+                        <!-- card with no image -->
 
+                        <div class="p-20 ">
+                            <h3 class="text-blue-300 mb-4 text-sm font-bold">
+                                Card with no image
+                            </h3>
+                            <div class="bg-white p-6 rounded-lg shadow-lg">
+                                <h2 class="text-2xl font-bold mb-2 text-gray-800">Card with no image</h2>
+                                <p class="text-gray-700">This is my cool new card!</p>
+                            </div>
+                        </div>
+                        <div class="p-20 ">
+                            <h3 class="text-blue-300 mb-4 text-sm font-bold">
+                                Card with no image
+                            </h3>
+                            <div class="bg-white p-6 rounded-lg shadow-lg">
+                                <h2 class="text-2xl font-bold mb-2 text-gray-800">Card with no image</h2>
+                                <p class="text-gray-700">This is my cool new card!</p>
+                            </div>
+                        </div>
+                        <div class="p-20 ">
+                            <h3 class="text-blue-300 mb-4 text-sm font-bold">
+                                Card with no image
+                            </h3>
+                            <div class="bg-white p-6 rounded-lg shadow-lg">
+                                <h2 class="text-2xl font-bold mb-2 text-gray-800">Card with no image</h2>
+                                <p class="text-gray-700">This is my cool new card!</p>
+                            </div>
                         </div>
 
-                        <div class=" flex flex-col   p-5 bg-white rounded shadow-sm">
-                            <b class="flex flex-row text-gray-500 text-3xl">Artists</b>
-
-                        </div>
-
-
-
-                    </div>
-                    <!--Table-->
-                    <div class="p-4 pl-10 font-bold text-gray-600">Users</div>
-                    <div class="grid  lg:grid-cols-1  md:grid-cols-1 p-4 gap-3">
-                        <div class="col-span-2 flex flex-auto items-center justify-between  p-5 bg-white rounded shadow-sm">
-                            <table class="min-w-full divide-y divide-gray-200 table-auto">
-                                <thead class="bg-gray-50">
-                                    <tr>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Name
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Email
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Status
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Role
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody class="bg-white divide-y divide-gray-200">
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            <div class="flex items-center">
-                                                <div class="flex-shrink-0 h-10 w-10">
-                                                    <img class="h-10 w-10 rounded-full" src="img.jpg" alt="">
-                                                </div>
-                                                <div class="ml-4">
-                                                    <div class="text-sm font-medium text-gray-900">
-                                                        YSR
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </td>
-
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            <span>
-                                                <div class="text-sm text-gray-500">
-                                                    yassir@example.com
-                                                </div>
-                                            </span>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            Admin
-                                        </td>
-
-                                    </tr>
-
-
-                                    <!-- More people... -->
-                                </tbody>
-                            </table>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -183,5 +146,13 @@
 
 
 </body>
+<script src="./assets/js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.2/flowbite.min.js"></script>
+<!-- link js file -->
+<script src="./assets/js/script.js"></script>
+<!-- jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 </html>

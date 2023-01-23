@@ -24,9 +24,11 @@ class Music extends Database
             header("location: ./dashboard.php");
         }
     }
-    public function update($id, $name, $date, $album, $lyrics)
+
+
+    public function update($title, $date, $album, $lyrics, $artiste, $id)
     {
-        $query = "UPDATE `music` SET `name`='$name',`date_creation`='$date',`album`='$album',`lyrics`='$lyrics' WHERE `id` = $id";
+        $query = "UPDATE `music` SET `title`='$title',`date_creation`='$date',`album`='$album',`lyrics`='$lyrics',`artiste_id`='$artiste' WHERE id = $id ";
         $stmt = $this->connection()->prepare($query);
 
         if ($stmt->execute()) {
@@ -37,9 +39,11 @@ class Music extends Database
             header("location: ./dashboard.php");
         }
     }
+
+
     public function getAll()
     {
-        $query = "SELECT m.title as title , m.date_creation as date , m.album as album , m.lyrics as lyrics , ar.name as name_Artist from music as m INNER JOIN artiste as ar 
+        $query = "SELECT m.id as music_id ,m.title as title , m.date_creation as date , m.album as album , m.lyrics as lyrics, m.artiste_id as id_artist , ar.name as name_Artist from music as m INNER JOIN artiste as ar 
         ON m.artiste_id = ar.id";
         $stmt = $this->connection()->prepare($query);
 
@@ -67,23 +71,27 @@ class Music extends Database
 
         return $stmt;
     }
-    // public function Read()
-    // {
-    //     $sql = "SELECT * FROM song";
-    //     $stmt = $this->connect()->query($sql);
-    //     // $stmt->execute();
-    //     // $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    //     while ($result = $stmt->fetch()) {
-    //         echo '
-    //         <tr>
-    //             <td id="songg' . $result['id'] . '" data="' . $result['title'] . '" class="text-white" href="#modal-task" data-bs-toggle="modal" onclick="editdTask(' . $result['id'] . ')" class="text-decoration-none text-white">' . $result['title'] . '</td>
-    //             <td id="artistt' . $result['id'] . '" data="' . $result['artist'] . '" class="text-white">' . $result['artist'] . '</td>
-    //             <td id="lyricss' . $result['id'] . '" data="' . $result['lyrics'] . '" class="text-white text-truncate">' . $result['lyrics'] . '</td>
-    //             <td id="datee' . $result['id'] . '" data="' . $result['date'] . '" class="text-white">' . $result['date'] . '</td>
-    //             <td id="albumm' . $result['id'] . '" data="' . $result['album'] . '" class="text-white">' . $result['album'] . '</td>
-    //         </tr>
-    //         ';
-    //     }
-    //     // return $result;
-    // }
+
+
+
+
+
+
+    function countMusic()
+    {
+        $requete = "SELECT COUNT(id) FROM music";
+        $stmt = $this->connection()->prepare($requete);
+        $stmt->execute();
+
+        return $stmt;
+    }
+    // COUNT PRICE FUNCTION
+    function countPrice()
+    {
+
+        global  $conn;
+        $requete = "SELECT SUM(price) FROM instruments;";
+        $res = mysqli_fetch_assoc(mysqli_query($conn, $requete));
+        return $res['SUM(price)'];
+    }
 }

@@ -17,12 +17,13 @@ $artist = new Artiste;
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="./assets/css/style.css">
   <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel=" stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
   <!--Replace with your tailwind.css once created-->
   <!--Regular Datatables CSS-->
   <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
   <!--Responsive Extension Datatables CSS-->
   <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
@@ -92,37 +93,35 @@ $artist = new Artiste;
           <div class="px-6 py-6 lg:px-8">
             <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Music Add:</h3>
             <form method="post" class="space-y-6" action="operation.php">
-              <input type="text" id="id" name="song-id">
+              <input type="hidden" id="id" name="song-id" value="">
               <div class="mb-6">
                 <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Music Name</label>
                 <input type="text" name="title" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required>
               </div>
               <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Artist</label>
               <select id="artist" name="artist" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option selected>Choose a country</option>
+                <option selected>Choose an Artist</option>
                 <?php $res = $artist->getArtiste();
                 ?>
+
                 <?php foreach ($res as $ART) { ?>
                   <option value="<?php echo $ART["id"] ?>"><?php echo $ART["name"] ?> </option>
-                  <!-- <option value="2">Canada</option>
-                <option value="3">France</option>
-                <option value="4">Germany</option> -->
+                <?php } ?>
               </select>
-            <?php } ?>
-            <div class="mb-6">
-              <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Album</label>
-              <input type="text" id="album" name="album" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required>
-            </div>
-            <div class="mb-6">
-              <label for="floatingInput" class="text-gray-700">Select a date</label>
-              <input id="date" name="date" type="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date" />
-            </div>
+              <div class="mb-6">
+                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Album</label>
+                <input type="text" id="album" name="album" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required>
+              </div>
+              <div class="mb-6">
+                <label for="floatingInput" class="text-gray-700">Select a date</label>
+                <input id="date" name="date" type="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date" />
+              </div>
 
 
-            <div class="flex justify-center">
-              <div class="mb-3 xl:w-96">
-                <label for="exampleFormControlTextarea1" class="form-label inline-block mb-2 text-gray-700">Msic Lyrics</label>
-                <textarea id="lyrics" name="lyrics" class="
+              <div class="flex justify-center">
+                <div class="mb-3 xl:w-96">
+                  <label for="exampleFormControlTextarea1" class="form-label inline-block mb-2 text-gray-700">Msic Lyrics</label>
+                  <textarea id="lyrics" name="lyrics" class="
         form-control
         block
         w-full
@@ -135,15 +134,15 @@ $artist = new Artiste;
         transition
         ease-in-outm-0focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
       " id="exampleFormControlTextarea1" rows="3" placeholder="Your lyrics"></textarea>
+                </div>
               </div>
-            </div>
 
-            <button name="saveMusic" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-              Save
-            </button>
-            <button name="editMusic" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-              edit
-            </button>
+              <button name="save" id="save" class="block bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                Save
+              </button>
+              <button name="edit" id="edit" class="hidden bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                edit
+              </button>
             </form>
           </div>
         </div>
@@ -173,14 +172,24 @@ $artist = new Artiste;
             <?php $res = $music->getAll();
             ?>
             <?php foreach ($res as $r) { ?>
-              <tr>
-                <td> <?php echo $r["name_Artist"] ?></td>
-                <td onclick="fillModal()" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="cursor-pointer"> <?php echo $r["title"] ?></td>
-                <td><?php echo $r["album"] ?></td>
-                <td><?php echo $r["date"] ?></td>
-                <td><?php echo $r["lyrics"] ?></td>
+
+              <tr id="<?php echo $r['music_id']; ?>">
+
+                <td artist_name=<?php echo $r["id_artist"]; ?>><button onclick="editeMusic(<?php echo $r['music_id']; ?>)" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class=" px-2  cursor-pointer">
+                    <i class="fas fa-edit" style="color: green;"></i>
+                  </button>
+                  <button name="delete" value="" class="px-2 cursor-pointer">
+                    <i class="fas fa-trash-alt" style="color: Tomato;"></i>
+                  </button> <?php echo $r["name_Artist"] ?>
+                </td>
+                <td <?php echo $r["title"] ?>> <?php echo $r["title"] ?></td>
+                <td <?php echo $r["album"] ?>><?php echo $r["album"] ?></td>
+                <td <?php echo $r["date"] ?>><?php echo $r["date"] ?></td>
+                <td class="w-9" <?php echo $r["lyrics"] ?>><?php echo $r["lyrics"] ?></td>
               </tr>
             <?php } ?>
+
+
 
           </tbody>
         </table>
@@ -192,18 +201,19 @@ $artist = new Artiste;
   </section>
 
 </body>
-<script src="./assets/js/script.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.2/flowbite.min.js"></script>
 <!-- link js file -->
 <script src="./assets/js/script.js"></script>
+<!-- <script src="./assets/js/script.js"></script> -->
+
+<script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.2/flowbite.min.js"></script>
+
 <!-- jQuery -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
 <!--Datatables -->
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+
 <script>
   $(document).ready(function() {
 
@@ -213,18 +223,6 @@ $artist = new Artiste;
       .columns.adjust()
       .responsive.recalc();
   });
-
-  function editdTask(id) {
-    document.getElementById("saveMusic").style.display = "none";
-    document.getElementById("editMusic").style.display = "block";
-    document.getElementById('id').value = id;
-    document.getElementById('name').value = document.getElementById("songg" + id).getAttribute('data');
-    document.getElementById('artist').value = document.getElementById("artistt" + id).getAttribute('data');
-    document.getElementById('album').value = document.getElementById("lyricss" + id).getAttribute('data');
-    document.getElementById('date').value = document.getElementById("datee" + id).getAttribute('data');
-    document.getElementById('lyrics').value = document.getElementById("albumm" + id).getAttribute('data');
-
-  }
 </script>
 
 </html>
