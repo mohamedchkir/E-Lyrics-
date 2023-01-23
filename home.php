@@ -1,4 +1,10 @@
 <?php
+require_once 'musicScript.php';
+if (!isset($_SESSION['email']));
+header('location: loginView.php');
+
+$stat = new Music();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,7 +54,7 @@
                         </li>
                     </ul>
                     <div class="py-1">
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ">Sign out</a>
+                        <a href="logout.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ">Sign out</a>
                     </div>
                 </div>
             </div>
@@ -65,7 +71,7 @@
                             <div>
                                 <div class="text-sm text-gray-400 ">Numbers of users</div>
                                 <div class="flex items-center pt-1">
-                                    <div class="text-3xl font-medium text-gray-600 ">34</div>
+                                    <div class="text-3xl font-medium text-gray-600 "><?php echo $stat->countMusic()['COUNT(id)'] ?></div>
                                 </div>
                             </div>
                             <div class="text-gray-500 text-4xl">

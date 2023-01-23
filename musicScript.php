@@ -83,7 +83,7 @@ class Music extends Database
         $stmt = $this->connection()->prepare($requete);
         $stmt->execute();
 
-        return $stmt;
+        return $stmt->fetch();
     }
     // COUNT PRICE FUNCTION
     function countPrice()
