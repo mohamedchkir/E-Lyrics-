@@ -24,7 +24,7 @@ if (isset($_POST['edit'])) {
 }
 
 if (isset($_POST['delete'])) {
-    $id = $_POST['song-id'];
+    $id = $_POST['song'];
 
     $music->delete($id);
 }

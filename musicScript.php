@@ -57,10 +57,10 @@ class Music extends Database
         $stmt = $this->connection()->prepare($query);
         if ($stmt->execute()) {
             $_SESSION["musicMessage-success"] = "Article has been deleted successfully!";
-            header("location: ../dashboard.php");
+            header("location: ./dashboard.php");
         } else {
             $_SESSION["musicMessage-field"] = "Sorry something went wrong.";
-            header("location: ../dashboard.php");
+            header("location: ./dashboard.php");
         }
     }
     public function getById($id)

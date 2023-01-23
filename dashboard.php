@@ -178,9 +178,13 @@ $artist = new Artiste;
                 <td artist_name=<?php echo $r["id_artist"]; ?>><button onclick="editeMusic(<?php echo $r['music_id']; ?>)" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class=" px-2  cursor-pointer">
                     <i class="fas fa-edit" style="color: green;"></i>
                   </button>
-                  <button name="delete" value="" class="px-2 cursor-pointer">
-                    <i class="fas fa-trash-alt" style="color: Tomato;"></i>
-                  </button> <?php echo $r["name_Artist"] ?>
+                  <form action="operation.php" method="post">
+                    <input type="hidden" id="id" name="song" value="<?php echo $r['music_id'] ?>">
+                    <button name="delete" value="" class="px-2 cursor-pointer">
+                      <i class="fas fa-trash-alt" style="color: Tomato;"></i>
+                    </button>
+                  </form>
+                  <?php echo $r["name_Artist"] ?>
                 </td>
                 <td <?php echo $r["title"] ?>> <?php echo $r["title"] ?></td>
                 <td <?php echo $r["album"] ?>><?php echo $r["album"] ?></td>
