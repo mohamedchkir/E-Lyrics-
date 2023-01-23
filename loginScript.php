@@ -34,7 +34,7 @@ class Login extends Database
                 $_SESSION['id'] = $result['id'];
                 $_SESSION['email'] = $result['email'];
                 $_SESSION['password'] = $result['password'];
-                header('location: dashboard.php');
+                header('location: home.php');
             } else {
                 $_SESSION['type_message'] = "error";
                 $_SESSION['message'] = 'Password incorrect';

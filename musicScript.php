@@ -85,6 +85,14 @@ class Music extends Database
 
         return $stmt->fetch();
     }
+    function countAdmin()
+    {
+        $requete = "SELECT COUNT(id) FROM user";
+        $stmt = $this->connection()->prepare($requete);
+        $stmt->execute();
+
+        return $stmt->fetch();
+    }
     // COUNT PRICE FUNCTION
     function countPrice()
     {

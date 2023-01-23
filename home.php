@@ -1,7 +1,7 @@
 <?php
 require_once 'musicScript.php';
-if (!isset($_SESSION['email']));
-header('location: loginView.php');
+// if (!isset($_SESSION['email']));
+// header('location: loginView.php');
 
 $stat = new Music();
 
@@ -69,7 +69,7 @@ $stat = new Music();
                         <!--Grid starts here-->
                         <div class="flex items-center justify-between p-5 bg-white rounded shadow-sm">
                             <div>
-                                <div class="text-sm text-gray-400 ">Numbers of users</div>
+                                <div class="text-sm text-gray-400 ">Music</div>
                                 <div class="flex items-center pt-1">
                                     <div class="text-3xl font-medium text-gray-600 "><?php echo $stat->countMusic()['COUNT(id)'] ?></div>
                                 </div>
@@ -81,9 +81,9 @@ $stat = new Music();
 
                         <div class="flex items-center justify-between p-5 bg-white rounded shadow-sm">
                             <div>
-                                <div class="text-sm text-gray-400 ">Check Out Today</div>
+                                <div class="text-sm text-gray-400 ">Users</div>
                                 <div class="flex items-center pt-1">
-                                    <div class="text-3xl font-medium text-gray-600 ">44</div>
+                                    <div class="text-3xl font-medium text-gray-600 "><?php echo $stat->countAdmin()['COUNT(id)'] ?></div>
                                 </div>
                             </div>
                             <div class="text-gray-500">
