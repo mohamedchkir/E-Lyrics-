@@ -72,56 +72,56 @@ $artist = new Artiste;
       </div>
     </nav>
   </header>
-  <section class="text-gray-900 tracking-wider leading-normal">
+  <section>
+    <div class="flex-auto">
+      <div class="flex flex-col">
+        <div class="bg-gray-900 h-screen">
+          <div class="mt-9 text-gray-900 tracking-wider leading-normal">
+            <!-- Main modal -->
+
+            <div id="authentication-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+              <div class="relative w-full h-full max-w-md md:h-auto">
+                <!-- Modal content -->
+
+                <div class="relative bg-white rounded-lg shadow">
+                  <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modal">
+                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                  </button>
+                  <div class="px-6 py-6 lg:px-8">
+                    <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Music Add:</h3>
+                    <form method="post" class="space-y-6" action="operation.php">
+                      <input type="hidden" id="id" name="song-id" value="">
+                      <div class="mb-6">
+                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Music Name</label>
+                        <input type="text" name="title" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required>
+                      </div>
+                      <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Artist</label>
+                      <select id="artist" name="artist" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option selected>Choose an Artist</option>
+                        <?php $res = $artist->getArtiste();
+                        ?>
+
+                        <?php foreach ($res as $ART) { ?>
+                          <option value="<?php echo $ART["id"] ?>"><?php echo $ART["name"] ?> </option>
+                        <?php } ?>
+                      </select>
+                      <div class="mb-6">
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Album</label>
+                        <input type="text" id="album" name="album" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required>
+                      </div>
+                      <div class="mb-6">
+                        <label for="floatingInput" class="text-gray-700">Select a date</label>
+                        <input id="date" name="date" type="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date" />
+                      </div>
 
 
-
-
-    <!-- Main modal -->
-
-    <div id="authentication-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
-      <div class="relative w-full h-full max-w-md md:h-auto">
-        <!-- Modal content -->
-
-        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-          <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modal">
-            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-            </svg>
-            <span class="sr-only">Close modal</span>
-          </button>
-          <div class="px-6 py-6 lg:px-8">
-            <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Music Add:</h3>
-            <form method="post" class="space-y-6" action="operation.php">
-              <input type="hidden" id="id" name="song-id" value="">
-              <div class="mb-6">
-                <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Music Name</label>
-                <input type="text" name="title" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required>
-              </div>
-              <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Artist</label>
-              <select id="artist" name="artist" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option selected>Choose an Artist</option>
-                <?php $res = $artist->getArtiste();
-                ?>
-
-                <?php foreach ($res as $ART) { ?>
-                  <option value="<?php echo $ART["id"] ?>"><?php echo $ART["name"] ?> </option>
-                <?php } ?>
-              </select>
-              <div class="mb-6">
-                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Album</label>
-                <input type="text" id="album" name="album" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required>
-              </div>
-              <div class="mb-6">
-                <label for="floatingInput" class="text-gray-700">Select a date</label>
-                <input id="date" name="date" type="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date" />
-              </div>
-
-
-              <div class="flex justify-center">
-                <div class="mb-3 xl:w-96">
-                  <label for="exampleFormControlTextarea1" class="form-label inline-block mb-2 text-gray-700">Msic Lyrics</label>
-                  <textarea id="lyrics" name="lyrics" class="
+                      <div class="flex justify-center">
+                        <div class="mb-3 xl:w-96">
+                          <label for="exampleFormControlTextarea1" class="form-label inline-block mb-2 text-gray-700">Msic Lyrics</label>
+                          <textarea id="lyrics" name="lyrics" class="
         form-control
         block
         w-full
@@ -134,80 +134,84 @@ $artist = new Artiste;
         transition
         ease-in-outm-0focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
       " id="exampleFormControlTextarea1" rows="3" placeholder="Your lyrics"></textarea>
+                        </div>
+                      </div>
+
+                      <button name="save" id="save" class="block bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                        Save
+                      </button>
+                      <button name="edit" id="edit" class="hidden bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                        edit
+                      </button>
+                    </form>
+                  </div>
                 </div>
               </div>
+            </div>
+            <!--Container-->
+            <div class="container w-full md:w-4/5 xl:w-3/5  mx-auto px-2">
+              <!-- Modal toggle -->
+              <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="text-white bg-green-500 hover:bg-green-700   font-medium rounded-full text-sm px-5 py-2.5 text-center" type="button">
+                <i class="fa-solid fa-plus"></i>
+              </button>
+              <!--Card-->
+              <div id='recipients' class="p-8 mt-2 lg:mt-0 rounded bg-white">
+                <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+                  <thead>
+                    <tr>
+                      <th data-priority="1">Artiste Name</th>
+                      <th data-priority="2">Music </th>
+                      <th data-priority="3">Album</th>
+                      <th data-priority="5">date</th>
+                      <th data-priority="5">Music Lyics</th>
+                    </tr>
 
-              <button name="save" id="save" class="block bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                Save
-              </button>
-              <button name="edit" id="edit" class="hidden bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                edit
-              </button>
-            </form>
+
+                  </thead>
+                  <tbody>
+                    <?php $res = $music->getAll();
+                    ?>
+                    <?php foreach ($res as $r) { ?>
+
+                      <tr id="<?php echo $r['music_id']; ?>">
+
+                        <td artist_name=<?php echo $r["id_artist"]; ?>><button onclick="editeMusic(<?php echo $r['music_id']; ?>)" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class=" px-2  cursor-pointer">
+                            <i class="fas fa-edit" style="color: green;"></i>
+                          </button>
+                          <form action="operation.php" method="post">
+                            <input type="hidden" id="id" name="song" value="<?php echo $r['music_id'] ?>">
+                            <button name="delete" value="" class="px-2 cursor-pointer">
+                              <i class="fas fa-trash-alt" style="color: Tomato;"></i>
+                            </button>
+                          </form>
+                          <?php echo $r["name_Artist"] ?>
+                        </td>
+                        <td <?php echo $r["title"] ?>> <?php echo $r["title"] ?></td>
+                        <td <?php echo $r["album"] ?>><?php echo $r["album"] ?></td>
+                        <td <?php echo $r["date"] ?>><?php echo $r["date"] ?></td>
+                        <td class="w-9" <?php echo $r["lyrics"] ?>><?php echo $r["lyrics"] ?></td>
+                      </tr>
+                    <?php } ?>
+
+
+
+                  </tbody>
+                </table>
+              </div>
+              <!--/Card-->
+            </div>
+            <!--/container-->
           </div>
         </div>
       </div>
     </div>
-    <!--Container-->
-    <div class="container w-full md:w-4/5 xl:w-3/5  mx-auto px-2">
-      <!-- Modal toggle -->
-      <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="text-white bg-blue-700 hover:bg-blue-800  focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center" type="button">
-        Add Music
-      </button>
-      <!--Card-->
-      <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
-        <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
-          <thead>
-            <tr>
-              <th data-priority="1">Artiste Name</th>
-              <th data-priority="2">Music </th>
-              <th data-priority="3">Album</th>
-              <th data-priority="5">date</th>
-              <th data-priority="5">Music Lyics</th>
-            </tr>
-
-
-          </thead>
-          <tbody>
-            <?php $res = $music->getAll();
-            ?>
-            <?php foreach ($res as $r) { ?>
-
-              <tr id="<?php echo $r['music_id']; ?>">
-
-                <td artist_name=<?php echo $r["id_artist"]; ?>><button onclick="editeMusic(<?php echo $r['music_id']; ?>)" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class=" px-2  cursor-pointer">
-                    <i class="fas fa-edit" style="color: green;"></i>
-                  </button>
-                  <form action="operation.php" method="post">
-                    <input type="hidden" id="id" name="song" value="<?php echo $r['music_id'] ?>">
-                    <button name="delete" value="" class="px-2 cursor-pointer">
-                      <i class="fas fa-trash-alt" style="color: Tomato;"></i>
-                    </button>
-                  </form>
-                  <?php echo $r["name_Artist"] ?>
-                </td>
-                <td <?php echo $r["title"] ?>> <?php echo $r["title"] ?></td>
-                <td <?php echo $r["album"] ?>><?php echo $r["album"] ?></td>
-                <td <?php echo $r["date"] ?>><?php echo $r["date"] ?></td>
-                <td class="w-9" <?php echo $r["lyrics"] ?>><?php echo $r["lyrics"] ?></td>
-              </tr>
-            <?php } ?>
-
-
-
-          </tbody>
-        </table>
-      </div>
-      <!--/Card-->
-    </div>
-    <!--/container-->
-
   </section>
 
 </body>
+
+
 <!-- link js file -->
 <script src="./assets/js/script.js"></script>
-<!-- <script src="./assets/js/script.js"></script> -->
 
 <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.2/flowbite.min.js"></script>

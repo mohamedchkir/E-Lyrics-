@@ -14,9 +14,9 @@ class Music extends Database
     public function create($title, $date, $album, $lyrics, $artiste)
     {
 
-        $query = "INSERT INTO `music`(`title`, `date_creation`, `album`, `lyrics`,`artiste_id`) VALUES ('$title','$date','$album','$lyrics','$artiste')";
+        $query = "INSERT INTO `music`(`title`, `date_creation`, `album`, `lyrics`,`artiste_id`) VALUES (?,?,?,?,?)";
         $stmt = $this->connection()->prepare($query);
-        if ($stmt->execute()) {
+        if ($stmt->execute(array($title, $date, $album, $lyrics, $artiste))) {
             $_SESSION["musicMessage-success"] = "Article has been created successfully!";
             header("location: ./dashboard.php");
         } else {
@@ -28,10 +28,10 @@ class Music extends Database
 
     public function update($title, $date, $album, $lyrics, $artiste, $id)
     {
-        $query = "UPDATE `music` SET `title`='$title',`date_creation`='$date',`album`='$album',`lyrics`='$lyrics',`artiste_id`='$artiste' WHERE id = $id ";
+        $query = "UPDATE `music` SET `title`=?,`date_creation`=?,`album`=?,`lyrics`=?,`artiste_id`=? WHERE id = ? ";
         $stmt = $this->connection()->prepare($query);
 
-        if ($stmt->execute()) {
+        if ($stmt->execute(array($title, $date, $album, $lyrics, $artiste, $id))) {
             $_SESSION["musicMessage-success"] = "Article has been updated successfully!";
             header("location: ./dashboard.php");
         } else {
@@ -53,9 +53,9 @@ class Music extends Database
     }
     public function delete($id)
     {
-        $query = "DELETE FROM `music` WHERE `id` = $id";
+        $query = "DELETE FROM `music` WHERE `id` = ?";
         $stmt = $this->connection()->prepare($query);
-        if ($stmt->execute()) {
+        if ($stmt->execute(array($id))) {
             $_SESSION["musicMessage-success"] = "Article has been deleted successfully!";
             header("location: ./dashboard.php");
         } else {
@@ -65,9 +65,9 @@ class Music extends Database
     }
     public function getById($id)
     {
-        $query = "SELECT * FROM `music` WHERE `id` = $id";
+        $query = "SELECT * FROM `music` WHERE `id` = ?";
         $stmt = $this->connection()->prepare($query);
-        $stmt->execute();
+        $stmt->execute(array($id));
 
         return $stmt;
     }
@@ -92,14 +92,5 @@ class Music extends Database
         $stmt->execute();
 
         return $stmt->fetch();
-    }
-    // COUNT PRICE FUNCTION
-    function countPrice()
-    {
-
-        global  $conn;
-        $requete = "SELECT SUM(price) FROM instruments;";
-        $res = mysqli_fetch_assoc(mysqli_query($conn, $requete));
-        return $res['SUM(price)'];
     }
 }
