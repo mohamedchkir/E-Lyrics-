@@ -1,5 +1,3 @@
-/*Overrides for Tailwind CSS */
-
 /*Form fields*/
 .dataTables_wrapper select,
 .dataTables_wrapper .dataTables_filter input {
@@ -16,12 +14,6 @@
 }
 select:not([size]) {
   background-position: right 0.15rem center !important;
-}
-
-/*Row Hover*/
-table.dataTable.hover tbody tr:hover,
-table.dataTable.display tbody tr:hover {
-  background-color: #ebf4ff;
 }
 
 /*Pagination Buttons*/
@@ -82,4 +74,8 @@ table#example {
 a#example_next:hover {
   background-color: #75ceff !important;
   color: #f2f9ff !important;
+}
+label {
+  font-family: monospace !important;
+  font-size: 0.85rem !important;
 }

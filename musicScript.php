@@ -14,33 +14,31 @@ class Music extends Database
     public function create($title, $date, $album, $lyrics, $artiste)
     {
 
-        for ($i = 0; $i < count($title); $i++) {
-            $query = "INSERT INTO `music`(`title`, `date_creation`, `album`, `lyrics`,`artiste_id`) VALUES (?,?,?,?,?)";
-            $stmt = $this->connection()->prepare($query);
-            if ($stmt->execute(array($title[$i], $date[$i], $album[$i], $lyrics[$i], $artiste[$i]))) {
-                $_SESSION["musicMessage-success"] = "Article has been created successfully!";
-                header("location: ./dashboard.php");
-            } else {
-                $_SESSION["musicMessage-field"] = "Sorry something went wrong.";
-                header("location: ./dashboard.php");
-            }
+
+        $query = "INSERT INTO `music`(`title`, `date_creation`, `album`, `lyrics`,`artiste_id`) VALUES (?,?,?,?,?)";
+        $stmt = $this->connection()->prepare($query);
+        if ($stmt->execute(array($title, $date, $album, $lyrics, $artiste))) {
+            $_SESSION["musicMessage-success"] = "Article has been created successfully!";
+            header("location: ./dashboard.php");
+        } else {
+            $_SESSION["musicMessage-field"] = "Sorry something went wrong.";
+            header("location: ./dashboard.php");
         }
     }
 
 
     public function update($title, $date, $album, $lyrics, $artiste, $id)
     {
-        for ($i = 0; $i < count($title); $i++) {
-            $query = "UPDATE `music` SET `title`=?,`date_creation`=?,`album`=?,`lyrics`=?,`artiste_id`=? WHERE id = ? ";
-            $stmt = $this->connection()->prepare($query);
 
-            if ($stmt->execute(array($title[$i], $date[$i], $album[$i], $lyrics[$i], $artiste[$i], $id[$i]))) {
-                $_SESSION["musicMessage-success"] = "Article has been updated successfully!";
-                header("location: ./dashboard.php");
-            } else {
-                $_SESSION["musicMessage-field"] = "Sorry something went wrong.";
-                header("location: ./dashboard.php");
-            }
+        $query = "UPDATE `music` SET `title`=?,`date_creation`=?,`album`=?,`lyrics`=?,`artiste_id`=? WHERE id = ? ";
+        $stmt = $this->connection()->prepare($query);
+
+        if ($stmt->execute(array($title, $date, $album, $lyrics, $artiste, $id))) {
+            $_SESSION["musicMessage-success"] = "Article has been updated successfully!";
+            header("location: ./dashboard.php");
+        } else {
+            $_SESSION["musicMessage-field"] = "Sorry something went wrong.";
+            header("location: ./dashboard.php");
         }
     }
 

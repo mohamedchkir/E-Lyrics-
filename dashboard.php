@@ -100,8 +100,8 @@ $artist = new Artiste;
                           <input type="text" name="title[]" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required>
                         </div>
                         <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Artist</label>
-                        <select id="artist" name="artist[]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                          <option selected>Choose an Artist</option>
+                        <select required id="artist" name="artist[]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                          <option value="">Choose an Artist</option>
                           <?php $res = $artist->getArtiste();
                           ?>
 
@@ -153,9 +153,9 @@ $artist = new Artiste;
               </div>
             </div>
             <!--Container-->
-            <div class="container w-full md:w-4/5 xl:w-3/5  mx-auto px-2">
+            <div class="container grid w-full md:w-4/5 xl:w-3/5  mx-auto px-2">
               <!-- Modal toggle -->
-              <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="text-white bg-green-500 hover:bg-green-700   font-medium rounded-full text-sm px-5 py-2.5 text-center" type="button">
+              <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="text-white bg-green-500 hover:bg-green-700 justify-self-end font-medium rounded-full text-sm px-5 py-2.5 text-center" type="button">
                 <i class="fa-solid fa-plus"></i>
               </button>
               <!--Card-->
