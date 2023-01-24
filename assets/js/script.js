@@ -20,3 +20,15 @@ function editeMusic(id) {
     document.querySelector("#lyrics").value = lyrics
     document.querySelector("#id").value = id
 }
+
+
+let btn_addMore = document.getElementById("add")
+let duplicate = document.querySelector(".duplicate")
+let inputsDiv = document.querySelector(".inputs")
+
+
+btn_addMore.addEventListener('click', (e) => {
+
+    duplicate.append(inputsDiv.cloneNode(true));
+
+})

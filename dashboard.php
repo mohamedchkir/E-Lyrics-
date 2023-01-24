@@ -93,50 +93,54 @@ $artist = new Artiste;
                   <div class="px-6 py-6 lg:px-8">
                     <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Music Add:</h3>
                     <form method="post" class="space-y-6" action="operation.php">
-                      <input type="hidden" id="id" name="song-id" value="">
-                      <div class="mb-6">
-                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Music Name</label>
-                        <input type="text" name="title" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required>
-                      </div>
-                      <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Artist</label>
-                      <select id="artist" name="artist" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option selected>Choose an Artist</option>
-                        <?php $res = $artist->getArtiste();
-                        ?>
+                      <div class="inputs">
+                        <input type="hidden" id="id" name="song-id" value="">
+                        <div class="mb-6">
+                          <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Music Name</label>
+                          <input type="text" name="title[]" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required>
+                        </div>
+                        <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Artist</label>
+                        <select id="artist" name="artist[]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                          <option selected>Choose an Artist</option>
+                          <?php $res = $artist->getArtiste();
+                          ?>
 
-                        <?php foreach ($res as $ART) { ?>
-                          <option value="<?php echo $ART["id"] ?>"><?php echo $ART["name"] ?> </option>
-                        <?php } ?>
-                      </select>
-                      <div class="mb-6">
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Album</label>
-                        <input type="text" id="album" name="album" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required>
-                      </div>
-                      <div class="mb-6">
-                        <label for="floatingInput" class="text-gray-700">Select a date</label>
-                        <input id="date" name="date" type="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date" />
-                      </div>
-
-
-                      <div class="flex justify-center">
-                        <div class="mb-3 xl:w-96">
-                          <label for="exampleFormControlTextarea1" class="form-label inline-block mb-2 text-gray-700">Msic Lyrics</label>
-                          <textarea id="lyrics" name="lyrics" class="
-        form-control
-        block
-        w-full
-        px-3
-        py-1.5
-        text-base
-        font-normal
-        text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300
-        rounded
-        transition
-        ease-in-outm-0focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
-      " id="exampleFormControlTextarea1" rows="3" placeholder="Your lyrics"></textarea>
+                          <?php foreach ($res as $ART) { ?>
+                            <option value="<?php echo $ART["id"] ?>"><?php echo $ART["name"] ?> </option>
+                          <?php } ?>
+                        </select>
+                        <div class="mb-6">
+                          <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Album</label>
+                          <input type="text" id="album" name="album[]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required>
+                        </div>
+                        <div class="mb-6">
+                          <label for="floatingInput" class="text-gray-700">Select a date</label>
+                          <input id="date" name="date[]" type="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date" />
+                        </div>
+                        <div class="flex justify-center">
+                          <div class="mb-3 xl:w-96">
+                            <label for="exampleFormControlTextarea1" class="form-label inline-block mb-2 text-gray-700">Msic Lyrics</label>
+                            <textarea id="lyrics" name="lyrics[]" class="
+                                form-control
+                                block
+                                w-full
+                                px-3
+                                py-1.5
+                                text-base
+                                font-normal
+                                text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300
+                                rounded
+                                transition
+                                ease-in-outm-0focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+                              " id="exampleFormControlTextarea1" rows="3" placeholder="Your lyrics"></textarea>
+                          </div>
                         </div>
                       </div>
+                      <div class="duplicate"></div>
 
+                      <button name="add" id="add" class="block bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                        ADD
+                      </button>
                       <button name="save" id="save" class="block bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
                         Save
                       </button>
@@ -189,7 +193,7 @@ $artist = new Artiste;
                         <td <?php echo $r["title"] ?>> <?php echo $r["title"] ?></td>
                         <td <?php echo $r["album"] ?>><?php echo $r["album"] ?></td>
                         <td <?php echo $r["date"] ?>><?php echo $r["date"] ?></td>
-                        <td class="w-9" <?php echo $r["lyrics"] ?>><?php echo $r["lyrics"] ?></td>
+                        <td class="truncate hover:text-clip" <?php echo $r["lyrics"] ?>><?php echo $r["lyrics"] ?></td>
                       </tr>
                     <?php } ?>
 

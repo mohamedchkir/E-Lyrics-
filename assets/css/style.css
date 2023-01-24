@@ -64,5 +64,22 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > th:first-child:before {
   background-color: #667eea !important;
 }
 td.dataTables_empty {
-  color: crimson !important;
+  color: #f30000 !important;
+  font-size: large;
+  font-family: monospace;
+}
+th.sorting {
+  font-family: monospace !important;
+  font-size: 1rem !important;
+}
+th.sorting_asc {
+  font-family: monospace !important;
+  font-size: 1rem !important;
+}
+table#example {
+  padding-bottom: 0 !important;
+}
+a#example_next:hover {
+  background-color: #75ceff !important;
+  color: #f2f9ff !important;
 }
