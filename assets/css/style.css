@@ -79,3 +79,11 @@ label {
   font-family: monospace !important;
   font-size: 0.85rem !important;
 }
+a.paginate_button.current {
+  background-color: #fffbd7 !important;
+  border: black solid;
+}
+a#example_previous:hover {
+  background-color: #6cbdfd !important;
+  color: #f3f4f6 !important;
+}
