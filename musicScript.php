@@ -18,10 +18,10 @@ class Music extends Database
         $query = "INSERT INTO `music`(`title`, `date_creation`, `album`, `lyrics`,`artiste_id`) VALUES (?,?,?,?,?)";
         $stmt = $this->connection()->prepare($query);
         if ($stmt->execute(array($title, $date, $album, $lyrics, $artiste))) {
-            $_SESSION["musicMessage-success"] = "Article has been created successfully!";
+            $_SESSION["success"] = "Article has been created successfully!";
             header("location: ./dashboard.php");
         } else {
-            $_SESSION["musicMessage-field"] = "Sorry something went wrong.";
+            $_SESSION["field"] = "Sorry something went wrong.";
             header("location: ./dashboard.php");
         }
     }
@@ -34,10 +34,10 @@ class Music extends Database
         $stmt = $this->connection()->prepare($query);
 
         if ($stmt->execute(array($title, $date, $album, $lyrics, $artiste, $id))) {
-            $_SESSION["musicMessage-success"] = "Article has been updated successfully!";
+            $_SESSION["success"] = "Article has been updated successfully!";
             header("location: ./dashboard.php");
         } else {
-            $_SESSION["musicMessage-field"] = "Sorry something went wrong.";
+            $_SESSION["field"] = "Sorry something went wrong.";
             header("location: ./dashboard.php");
         }
     }
@@ -58,10 +58,10 @@ class Music extends Database
         $query = "DELETE FROM `music` WHERE `id` = ?";
         $stmt = $this->connection()->prepare($query);
         if ($stmt->execute(array($id))) {
-            $_SESSION["musicMessage-success"] = "Article has been deleted successfully!";
+            $_SESSION["delete-success"] = "Article has been deleted successfully!";
             header("location: ./dashboard.php");
         } else {
-            $_SESSION["musicMessage-field"] = "Sorry something went wrong.";
+            $_SESSION["delete-field"] = "Sorry something went wrong.";
             header("location: ./dashboard.php");
         }
     }
@@ -90,6 +90,14 @@ class Music extends Database
     function countAdmin()
     {
         $requete = "SELECT COUNT(id) FROM user";
+        $stmt = $this->connection()->prepare($requete);
+        $stmt->execute();
+
+        return $stmt->fetch();
+    }
+    function countArtist()
+    {
+        $requete = "SELECT COUNT(id) FROM artiste";
         $stmt = $this->connection()->prepare($requete);
         $stmt->execute();
 

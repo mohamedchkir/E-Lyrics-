@@ -3,6 +3,8 @@ include_once "musicScript.php";
 include_once "artisteScript.php";
 $music = new Music;
 $artist = new Artiste;
+// session_start();
+session_destroy();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,29 +47,19 @@ $artist = new Artiste;
           </svg>
         </button>
         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-          <ul class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
+          <ul class="flex   justify-between p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
             <li>
-              <a href="home.php" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">Home</a>
+              <a href="home.php" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-blue-300 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">Home</a>
             </li>
             <li>
-              <a href="#" class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0" aria-current="page">Music</a>
+              <a href="#" class="block py-2 pl-3 pr-4 text-white bg-gray-700 rounded hover:bg-blue-300 md:bg-transparent md:text-blue-700 md:p-0" aria-current="page">Music</a>
             </li>
-        </div>
-        <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="sm:hidden md:block	 w-10 h-10 rounded-full cursor-pointer" src="./assets/img/profile-img.jpg" alt="User dropdown">
-        <!-- Dropdown menu -->
-        <div id="userDropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-44 ">
-          <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
-            <div>Mohamed chkir</div>
-            <div class="font-medium truncate">mohamedchkir2@gmail.com</div>
-          </div>
-          <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="avatarButton">
-            <li>
-              <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">Settings</a>
-            </li>
+            <div class="logout">
+              <li>
+                <a href="logout.php" class="block py-2 pl-3 pr-4 text-white bg-gray-700 rounded hover:bg-blue-300 md:bg-transparent md:text-red-700 md:p-0">Log Out</a>
+              </li>
+            </div>
           </ul>
-          <div class="py-1">
-            <a href="logout.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ">Sign out</a>
-          </div>
         </div>
       </div>
     </nav>
@@ -78,11 +70,9 @@ $artist = new Artiste;
         <div class="bg-gray-900 h-screen">
           <div class="mt-9 text-gray-900 tracking-wider leading-normal">
             <!-- Main modal -->
-
             <div id="authentication-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
               <div class="relative w-full h-full max-w-md md:h-auto">
                 <!-- Modal content -->
-
                 <div class="relative bg-white rounded-lg shadow">
                   <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modal">
                     <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -93,6 +83,7 @@ $artist = new Artiste;
                   <div class="px-6 py-6 lg:px-8">
                     <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Music Add:</h3>
                     <form method="post" class="space-y-6" action="operation.php">
+                      <!-- Modal inputs div -->
                       <div class="inputs">
                         <input type="hidden" id="id" name="song-id" value="">
                         <div class="mb-6">
@@ -120,26 +111,16 @@ $artist = new Artiste;
                         <div class="flex justify-center">
                           <div class="mb-3 xl:w-96">
                             <label for="exampleFormControlTextarea1" class="form-label inline-block mb-2 text-gray-700">Msic Lyrics</label>
-                            <textarea id="lyrics" name="lyrics[]" class="
-                                form-control
-                                block
-                                w-full
-                                px-3
-                                py-1.5
-                                text-base
-                                font-normal
-                                text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300
-                                rounded
-                                transition
-                                ease-in-outm-0focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+                            <textarea id="lyrics" name="lyrics[]" class=" form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-outm-0focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
                               " id="exampleFormControlTextarea1" rows="3" placeholder="Your lyrics"></textarea>
                           </div>
                         </div>
                       </div>
+                      <!-- empty div to duplicate  -->
                       <div class="duplicate"></div>
-
+                      <!-- button Modal -->
                       <button name="add" id="add" class="block bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                        ADD
+                        Add
                       </button>
                       <button name="save" id="save" class="block bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
                         Save
@@ -153,12 +134,13 @@ $artist = new Artiste;
               </div>
             </div>
             <!--Container-->
-            <div class="container grid w-full md:w-4/5 xl:w-3/5  mx-auto px-2">
+            <div class="container w-full md:w-4/5 xl:w-3/5  mx-auto px-2">
               <!-- Modal toggle -->
               <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="text-white bg-green-500 hover:bg-green-700 justify-self-end font-medium rounded-full text-sm px-5 py-2.5 text-center" type="button">
                 <i class="fa-solid fa-plus"></i>
               </button>
               <!--Card-->
+
               <div id='recipients' class="p-8 mt-2 lg:mt-0 rounded bg-white">
                 <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                   <thead>
@@ -176,9 +158,7 @@ $artist = new Artiste;
                     <?php $res = $music->getAll();
                     ?>
                     <?php foreach ($res as $r) { ?>
-
                       <tr id="<?php echo $r['music_id']; ?>">
-
                         <td artist_name=<?php echo $r["id_artist"]; ?>><button onclick="editeMusic(<?php echo $r['music_id']; ?>)" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class=" px-2  cursor-pointer">
                             <i class="fas fa-edit" style="color: green;"></i>
                           </button>
@@ -196,9 +176,6 @@ $artist = new Artiste;
                         <td class="truncate hover:text-clip" <?php echo $r["lyrics"] ?>><?php echo $r["lyrics"] ?></td>
                       </tr>
                     <?php } ?>
-
-
-
                   </tbody>
                 </table>
               </div>

@@ -22,7 +22,7 @@ $stat = new Music();
 
 <body>
     <header>
-        <nav class="fixed w-full bg-white border-gray-200 px-2 sm:px-4 py-2.5  ">
+        <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded ">
             <div class="container flex flex-wrap items-center justify-between mx-auto px-4">
                 <a href="#" class="flex items-center">
                     <img src="./assets/img/I1957ejcPJjg3JPArHIqKhgmLW5GMZ22WqqrWCMo.jpg" class="h-6 mr-3 sm:h-9" alt="Flowbite Logo" />
@@ -35,29 +35,19 @@ $stat = new Music();
                     </svg>
                 </button>
                 <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-                    <ul class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
+                    <ul class="flex   justify-between p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
                         <li>
-                            <a href="home.php" class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0" aria-current="page">Home</a>
+                            <a href="home.php" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:text-blue-900 md:hover:bg-transparent md:border-0 md:text-blue-700 md:p-0 " aria-current="page">Home</a>
                         </li>
                         <li>
-                            <a href="dashboard.php" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">Music</a>
+                            <a href="dashboard.php" class="block py-2 pl-3 pr-4 text-gray-700  rounded hover:text-blue-900 md:bg-transparent md:text-gray-700 md:p-0">Music</a>
                         </li>
-                </div>
-                <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-10 h-10 rounded-full cursor-pointer" src="./assets/img/profile-img.jpg" alt="User dropdown">
-                <!-- Dropdown menu -->
-                <div id="userDropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-                    <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
-                        <div>Mohamed chkir</div>
-                        <div class="font-medium truncate">mohamedchkir2@gmail.com</div>
-                    </div>
-                    <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="avatarButton">
-                        <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">Settings</a>
-                        </li>
+                        <div class="logout">
+                            <li>
+                                <a href="logout.php" class="block py-2 pl-3 pr-4 text-white  rounded hover:text-red-900 md:bg-transparent md:text-red-500 md:p-0">Log Out</a>
+                            </li>
+                        </div>
                     </ul>
-                    <div class="py-1">
-                        <a href="logout.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ">Sign out</a>
-                    </div>
                 </div>
             </div>
         </nav>
@@ -87,7 +77,7 @@ $stat = new Music();
 
                         <div class="flex items-center justify-between p-5 bg-amber-300  rounded shadow-sm">
                             <div>
-                                <div class="font-black text-xl text-gray-900 ">Users</div>
+                                <div class="font-black text-xl text-gray-900 ">Admins</div>
                                 <div class="flex items-center pt-1">
                                     <div class="text-3xl font-medium text-gray-50 "><?php echo $stat->countAdmin()['COUNT(id)'] ?></div>
                                 </div>
@@ -103,9 +93,9 @@ $stat = new Music();
 
                         <div class="flex items-center justify-between p-5 bg-amber-300  rounded shadow-sm">
                             <div>
-                                <div class="font-black text-xl text-gray-900 ">Total Songs</div>
+                                <div class="font-black text-xl text-gray-900 ">Artiste</div>
                                 <div class="flex items-center pt-1">
-                                    <div class="text-3xl font-medium text-gray-50 ">10</div>
+                                    <div class="text-3xl font-medium text-gray-50 "><?php echo $stat->countArtist()['COUNT(id)'] ?></div>
                                 </div>
                             </div>
                             <div class="text-gray-500 text-4xl">
@@ -122,36 +112,20 @@ $stat = new Music();
                     <div class="p-4 pt-28 pb-0  pl-10 font-bold text-gray-50">Music</div>
 
                     <div class="cards">
-                        <!-- card with no image -->
-
-                        <div class="p-20 ">
-                            <h3 class="text-gray-50 mb-4 text-sm font-bold">
-                                Card with no image
-                            </h3>
-                            <div class="bg-white p-6 rounded-lg shadow-lg">
-                                <h2 class="text-2xl font-bold mb-2 text-gray-800">Card with no image</h2>
-                                <p class="text-gray-700">This is my cool new card!</p>
+                        <!-- cards Music -->
+                        <?php $res = $stat->getAll();
+                        ?>
+                        <?php foreach ($res as $r) { ?>
+                            <div class="p-10 ">
+                                <h3 class="text-gray-50 mb-3 font-bold font-mono text-xl">
+                                    <?php echo $r["name_Artist"] ?>
+                                </h3>
+                                <div class="bg-white p-6 rounded-lg shadow-lg">
+                                    <h2 class="text-2xl font-bold mb-2 text-gray-800"><?php echo $r["title"] ?></h2>
+                                    <p class="text-gray-700"><?php echo $r["album"] ?></p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="p-20 ">
-                            <h3 class="text-gray-50 mb-4 text-sm font-bold">
-                                Card with no image
-                            </h3>
-                            <div class="bg-white p-6 rounded-lg shadow-lg">
-                                <h2 class="text-2xl font-bold mb-2 text-gray-800">Card with no image</h2>
-                                <p class="text-gray-700">This is my cool new card!</p>
-                            </div>
-                        </div>
-                        <div class="p-20 ">
-                            <h3 class="text-gray-50 mb-4 text-sm font-bold">
-                                Card with no image
-                            </h3>
-                            <div class="bg-white p-6 rounded-lg shadow-lg">
-                                <h2 class="text-2xl font-bold mb-2 text-gray-800">Card with no image</h2>
-                                <p class="text-gray-700">This is my cool new card!</p>
-                            </div>
-                        </div>
-
+                        <?php } ?>
                     </div>
                 </div>
             </div>
