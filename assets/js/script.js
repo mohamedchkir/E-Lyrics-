@@ -1,10 +1,15 @@
+let btn_addMore = document.getElementById("add")
+let duplicate = document.querySelector(".duplicate")
+let inputsDiv = document.querySelector(".inputs")
+
 function btn_edit_display() {
-    document.getElementById("edit").classList.remove("hidden");
-    document.getElementById("edit").classList.add("block");
+    btn_addMore.classList.add("hidden");
     document.getElementById("save").classList.add("hidden");
+    document.getElementById("edit").classList.remove("hidden");
 }
 
 function editeMusic(id) {
+
     btn_edit_display();
 
     let artist = document.getElementById(id).children[0].getAttribute('artist_name')
@@ -21,11 +26,12 @@ function editeMusic(id) {
     document.querySelector("#id").value = id
 }
 
-
-let btn_addMore = document.getElementById("add")
-let duplicate = document.querySelector(".duplicate")
-let inputsDiv = document.querySelector(".inputs")
-
+function addMusic() {
+    document.getElementById('form').reset();
+    btn_addMore.classList.remove("hidden");
+    document.getElementById("save").classList.remove("hidden");
+    document.getElementById("edit").classList.add("hidden");
+}
 
 btn_addMore.addEventListener('click', (e) => {
 

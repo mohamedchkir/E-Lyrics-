@@ -29,7 +29,6 @@ class Login extends Database
             header('location: loginView.php');
         } else {
             $res = password_verify($this->password, $result["password"]);
-            // $res = ($this->password == $result["password"]);
             if ($res) {
                 $_SESSION['id'] = $result['id'];
                 $_SESSION['email'] = $result['email'];

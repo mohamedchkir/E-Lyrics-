@@ -82,7 +82,7 @@ session_destroy();
                   </button>
                   <div class="px-6 py-6 lg:px-8">
                     <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Music Add:</h3>
-                    <form method="post" class="space-y-6" action="operation.php">
+                    <form method="post" class="space-y-6" action="operation.php" id="form">
                       <!-- Modal inputs div -->
                       <div class="inputs">
                         <input type="hidden" id="id" name="song-id" value="">
@@ -136,7 +136,7 @@ session_destroy();
             <!--Container-->
             <div class="container w-full md:w-4/5 xl:w-3/5  mx-auto px-2">
               <!-- Modal toggle -->
-              <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="text-white bg-green-500 hover:bg-green-700 justify-self-end font-medium rounded-full text-sm px-5 py-2.5 text-center" type="button">
+              <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="text-white bg-green-500 hover:bg-green-700 justify-self-end font-medium rounded-full text-sm px-5 py-2.5 text-center" type="button" onclick="addMusic()">
                 <i class="fa-solid fa-plus"></i>
               </button>
               <!--Card-->

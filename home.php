@@ -121,10 +121,12 @@ $stat = new Music();
                                 <h3 class="text-gray-50 mb-3 font-bold font-mono text-xl">
                                     <?php echo $r["name_Artist"] ?>
                                 </h3>
-                                <div class="bg-white p-6 rounded-lg shadow-lg">
-                                    <h2 class="text-2xl font-bold mb-2 text-gray-800"><?php echo $r["title"] ?></h2>
-                                    <p class="text-gray-700"><?php echo $r["album"] ?></p>
-                                </div>
+                                <a href="music.php?musicId=<?php echo $r["music_id"] ?>" target="_blank">
+                                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                                        <h2 class="text-2xl font-bold mb-2 text-gray-800"><?php echo $r["title"] ?></h2>
+                                        <p class="text-gray-700"><?php echo $r["album"] ?></p>
+                                    </div>
+                                </a>
                             </div>
                         <?php } ?>
                     </div>

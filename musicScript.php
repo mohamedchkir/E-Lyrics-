@@ -48,9 +48,7 @@ class Music extends Database
         $query = "SELECT m.id as music_id ,m.title as title , m.date_creation as date , m.album as album , m.lyrics as lyrics, m.artiste_id as id_artist , ar.name as name_Artist from music as m INNER JOIN artiste as ar 
         ON m.artiste_id = ar.id";
         $stmt = $this->connection()->prepare($query);
-
         $stmt->execute();
-
         return $stmt;
     }
     public function delete($id)
@@ -71,7 +69,7 @@ class Music extends Database
         $stmt = $this->connection()->prepare($query);
         $stmt->execute(array($id));
 
-        return $stmt;
+        return $stmt->fetch();
     }
 
 
